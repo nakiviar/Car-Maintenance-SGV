@@ -52,11 +52,14 @@ public class ConductorServiceImpl implements ConductorService {
 		// TODO Auto-generated method stub
 		int i =conductorRepository.update(t);
 		if(i==1) {
+			System.out.println(t.getId_empleado()+t.getNombre()+"");
 			return conductorRepository.get(t.getId_empleado());
+		
 		}
 		return null;
 		
 	}
+	
 
 	@Override
 	public void delete(String id) {

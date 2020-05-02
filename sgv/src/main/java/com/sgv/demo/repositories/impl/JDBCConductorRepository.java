@@ -1,5 +1,6 @@
 package com.sgv.demo.repositories.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,10 @@ public class JDBCConductorRepository implements ConductorRepository{
 		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 		    protected void doInTransactionWithoutResult(TransactionStatus paramTransactionStatus) {
 		    try{
+		    	
 		      String sqlQuery = ""
-		      		+ "  INSERT INTO TB_EMPLEADO(\"DNI\",\"nombre\",\"primer_apellido\",\"segundo_apellido\",\"telefono_celular\",\"direccion\",\"correo\",\r\n" + 
-		      		"    \"id_tipoLicen\",\"cod_licencia\",\"nro_hijos\",\"cuenta_ahorros\",\"foto\",\"id_dispon\") \r\n" + 
-		      		"    VALUES (?,?,?, ?,?,?,?,?,?,?,?,?,?)";
+		      		+ "  INSERT INTO TB_EMPLEADO(\"DNI\",\"nombre\",\"primer_apellido\",\"segundo_apellido\",\"telefono_celular\",\"direccion\",\"correo\"," + 
+		      		"    \"id_tipoLicen\",\"cod_licencia\",\"nro_hijos\",\"cuenta_ahorros\",\"foto\",\"id_dispon\") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		      
 		      jdbcTemplate.update(sqlQuery, 
 		    		  			  conductor.getDNI(),
@@ -52,8 +53,13 @@ public class JDBCConductorRepository implements ConductorRepository{
 		    		  			  conductor.getCuenta_ahorros(),
 		    		  			  conductor.getFoto(),
 		    		  			  conductor.getId_dispon());
+		      System.out.println("Cliente creado con el id : "+ conductor.getId_empleado());
+	
 		    }catch (Exception e) {
+		    	System.out.println(e);
+		    	
 		      paramTransactionStatus.setRollbackOnly();
+		      System.out.println("ERROR EN EL INSERT CONDUCTOR");
 		    }
 		    }
 		  });
@@ -70,19 +76,19 @@ public class JDBCConductorRepository implements ConductorRepository{
 	                (rs, rowNum) ->
 	                        new Conductor(
 	    							rs.getString("id_empleado"),
-	    							rs.getInt("DNI"),
+	    							rs.getLong("DNI"),
 	    							rs.getString("nombre"),
 	    							rs.getString("primer_apellido"),
 	    							rs.getString("segundo_apellido"),
-	    							rs.getInt("telefono_celular"),
+	    							rs.getLong("telefono_celular"),
 	    							rs.getString("direccion"),
 	    							rs.getString("correo"),
 	    							rs.getString("id_tipoLicen"),
 	    							rs.getString("cod_licencia"),
-	    							rs.getInt("nro_hijos"),
-	    							rs.getInt("cuenta_ahorros"),
+	    							rs.getLong("nro_hijos"),
+	    							rs.getLong("cuenta_ahorros"),
 	    							rs.getString("foto"),
-	    							rs.getInt("id_dispon")
+	    							rs.getLong("id_dispon")
 	    							
 	    							));
 	}
@@ -120,8 +126,11 @@ public class JDBCConductorRepository implements ConductorRepository{
 
 	@Override
 	public int update(Conductor conductor) {
-		
-		return jdbcTemplate.update(
+		int i =0;
+	try {
+		System.out.println(conductor.getId_empleado());
+		System.out.println(conductor.getCorreo());
+	 i=	jdbcTemplate.update(
                 "update TB_EMPLEADO set \"DNI\"=?,\"nombre\"=?,\"primer_apellido\"=?,\"segundo_apellido\"=?,"
                 + "\"telefono_celular\"=?,\"direccion\"=?,\"correo\"=?, \"id_tipoLicen\"=?,\"cod_licencia\"=?,"
                 + "\"nro_hijos\"=?,\"cuenta_ahorros\"=?,\"foto\"=?,\"id_dispon\"=? where \"id_empleado\" = ?",
@@ -139,6 +148,13 @@ public class JDBCConductorRepository implements ConductorRepository{
 	  			  conductor.getFoto(),
 	  			  conductor.getId_dispon(),
 	  			  conductor.getId_empleado());
+
+		System.out.println(conductor.getNombre());
+	}catch (Exception e) {
+		System.out.println(e);
+	}
+	return i ;
+	
 	}
 
 

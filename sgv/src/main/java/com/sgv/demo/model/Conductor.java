@@ -152,6 +152,15 @@ public class Conductor {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "Conductor [id_empleado=" + id_empleado + ", DNI=" + DNI + ", nombre=" + nombre + ", primer_apellido="
+				+ primer_apellido + ", segundo_apellido=" + segundo_apellido + ", telefono_celular=" + telefono_celular
+				+ ", direccion=" + direccion + ", correo=" + correo + ", id_tipoLicen=" + id_tipoLicen
+				+ ", cod_licencia=" + cod_licencia + ", nro_hijos=" + nro_hijos + ", cuenta_ahorros=" + cuenta_ahorros
+				+ ", foto=" + foto + ", id_dispon=" + id_dispon + "]";
+	}
+
 }
 
 /*
