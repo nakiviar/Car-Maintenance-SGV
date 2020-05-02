@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sgv.demo.model.Conductor;
 import com.sgv.demo.model.Licencia;
-import com.sgv.demo.services.impl.ConductorServiceImpl;
+import com.sgv.demo.services.ConductorService;
 
 @RestController
 @RequestMapping("/conductores")
@@ -23,7 +23,7 @@ public class ConductorControllerRest {
 
 	
 	@Autowired    
-	private ConductorServiceImpl conductorService;
+	private ConductorService conductorService;
 
 		//LISTA LOS TIPOS DE LICENCIAS
 	    @RequestMapping(value="licencias", method=RequestMethod.GET)

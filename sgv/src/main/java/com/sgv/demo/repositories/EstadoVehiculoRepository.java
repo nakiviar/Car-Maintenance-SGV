@@ -7,5 +7,5 @@ import com.sgv.demo.model.Vehiculo_estado;
 
 public interface EstadoVehiculoRepository{
 	
-	public List<Vehiculo_estado> findAllVehiculoEstado ();
+	public List<Vehiculo_estado> findAllVehiculoEstado();
 }
