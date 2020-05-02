@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sgv.demo.model.Conductor;
 import com.sgv.demo.model.Licencia;
 import com.sgv.demo.services.impl.ConductorServiceImpl;
 
@@ -17,9 +18,21 @@ public class ConductorControllerRest {
 	@Autowired    
 	private ConductorServiceImpl conductorService;
 
-
-	    @RequestMapping(value="", method=RequestMethod.GET)
+		//LISTA LOS TIPOS DE LICENCIAS
+	    @RequestMapping(value="licencias", method=RequestMethod.GET)
 	    public List<Licencia> getAllUsers() {
 	        return conductorService.getAllLicencias();
 	    }
+	    //LISTADO DE CONDUCTORES - GET
+	    @RequestMapping(value="", method=RequestMethod.GET)
+	    public List<Conductor> getAllConductores() {
+	        return conductorService.getAll();
+	    }
+	    
+	    //REGISTRO DE CONDUCTOR - POST
+	    
+	    
+	    //CONDUCTORES POR ID - GET
+	    
+	    
 }

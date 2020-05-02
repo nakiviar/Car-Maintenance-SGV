@@ -10,5 +10,9 @@ public interface CRUDRepository<T, ID>{
 
 	List<T> all();
 
-	void delete(ID primaryKey);
+	void changeState(ID primaryKey);
+	
+	int update(T resourse);
+	
+	
 }

@@ -3,19 +3,19 @@ package com.sgv.demo.model;
 public class Conductor {
 
 	private String id_empleado;
-	private int DNI;
+	private long DNI;
 	private String nombre;
 	private String primer_apellido;
 	private String segundo_apellido;
-	private String telefono_celular;
+	private long telefono_celular;
 	private String direccion;
 	private String correo;
 	private String id_tipoLicen;
 	private String cod_licencia;
-	private int nro_hijos;
-	private int cuenta_ahorros;
+	private long nro_hijos;
+	private long cuenta_ahorros;
 	private String foto;
-	private int id_dispon;
+	private long id_dispon;
 
 	public String getId_empleado() {
 		return id_empleado;
@@ -25,11 +25,11 @@ public class Conductor {
 		this.id_empleado = id_empleado;
 	}
 
-	public int getDNI() {
+	public long getDNI() {
 		return DNI;
 	}
 
-	public void setDNI(int dNI) {
+	public void setDNI(long dNI) {
 		DNI = dNI;
 	}
 
@@ -57,11 +57,11 @@ public class Conductor {
 		this.segundo_apellido = segundo_apellido;
 	}
 
-	public String getTelefono_celular() {
+	public long getTelefono_celular() {
 		return telefono_celular;
 	}
 
-	public void setTelefono_celular(String telefono_celular) {
+	public void setTelefono_celular(long telefono_celular) {
 		this.telefono_celular = telefono_celular;
 	}
 
@@ -97,19 +97,19 @@ public class Conductor {
 		this.cod_licencia = cod_licencia;
 	}
 
-	public int getNro_hijos() {
+	public long getNro_hijos() {
 		return nro_hijos;
 	}
 
-	public void setNro_hijos(int nro_hijos) {
+	public void setNro_hijos(long nro_hijos) {
 		this.nro_hijos = nro_hijos;
 	}
 
-	public int getCuenta_ahorros() {
+	public long getCuenta_ahorros() {
 		return cuenta_ahorros;
 	}
 
-	public void setCuenta_ahorros(int cuenta_ahorros) {
+	public void setCuenta_ahorros(long cuenta_ahorros) {
 		this.cuenta_ahorros = cuenta_ahorros;
 	}
 
@@ -121,12 +121,35 @@ public class Conductor {
 		this.foto = foto;
 	}
 
-	public int getId_dispon() {
+	public long getId_dispon() {
 		return id_dispon;
 	}
 
-	public void setId_dispon(int id_dispon) {
+	public void setId_dispon(long id_dispon) {
 		this.id_dispon = id_dispon;
+	}
+
+	public Conductor(String id_empleado, long dNI, String nombre, String primer_apellido, String segundo_apellido,
+			long telefono_celular, String direccion, String correo, String id_tipoLicen, String cod_licencia,
+			long nro_hijos, long cuenta_ahorros, String foto, long id_dispon) {
+		this.id_empleado = id_empleado;
+		DNI = dNI;
+		this.nombre = nombre;
+		this.primer_apellido = primer_apellido;
+		this.segundo_apellido = segundo_apellido;
+		this.telefono_celular = telefono_celular;
+		this.direccion = direccion;
+		this.correo = correo;
+		this.id_tipoLicen = id_tipoLicen;
+		this.cod_licencia = cod_licencia;
+		this.nro_hijos = nro_hijos;
+		this.cuenta_ahorros = cuenta_ahorros;
+		this.foto = foto;
+		this.id_dispon = id_dispon;
+	}
+
+	public Conductor() {
+		// TODO Auto-generated constructor stub
 	}
 
 }
