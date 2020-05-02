@@ -15,15 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sgv.demo.model.Conductor;
 import com.sgv.demo.model.Licencia;
-import com.sgv.demo.repositories.impl.JDBCConductorRepository;
 import com.sgv.demo.services.impl.ConductorServiceImpl;
 
 @RestController
 @RequestMapping("/conductores")
 public class ConductorControllerRest {
 
-	@Autowired    
-	private JDBCConductorRepository repo;
 	
 	@Autowired    
 	private ConductorServiceImpl conductorService;

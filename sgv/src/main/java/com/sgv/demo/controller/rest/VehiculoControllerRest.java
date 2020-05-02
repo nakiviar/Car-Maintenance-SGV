@@ -1,5 +1,63 @@
 package com.sgv.demo.controller.rest;
 
-public class VehiculoControllerRest {
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sgv.demo.model.Vehiculo;
+import com.sgv.demo.services.VehiculoService;
+
+@RestController
+@RequestMapping("/vehiculos")
+public class VehiculoControllerRest {
+	@Autowired    
+	private VehiculoService vehiculoService;
+
+
+	    //LISTADO DE VEHICULOS - GET
+	    @GetMapping
+	    public List<Vehiculo> getAllVehiculos() {
+	        return vehiculoService.getAll();
+	    }
+	    
+	    //REGISTRO DE VEHICULO - POST 
+	    @PostMapping
+	    public String createVehiculo(@RequestBody Vehiculo veh) {
+	    	vehiculoService.create(veh);
+	    	return "Vehiculo Creado"; 
+	    	
+	    }
+	  
+	    
+	    //VEHICULOS POR ID - GET
+		@GetMapping("/buscar/{vehiculoId}")
+		public Vehiculo getVehiculo(@PathVariable String vehiculoId) {
+			Vehiculo vehiculo= vehiculoService.get(vehiculoId);
+			return vehiculo;
+		}
+
+
+		//ACTUALIZAR
+		@PutMapping("/actualizar")
+		public String updateVehiculo(@RequestBody Vehiculo veh) {
+			//con=conductorService.get(conductorId);
+			
+			Vehiculo nuevo=vehiculoService.update(veh);
+			return "se actualizo : "+nuevo.toString() ;
+		
+		}
+		//CAMBIAR ESTADO A INACTIVO
+		@DeleteMapping("/eliminar/{vehiculoId}")
+		public String deleteVehiculo(@PathVariable String vehiculoId) {
+			vehiculoService.delete(vehiculoId);
+			return "AHORA EL VEHICULO ESTA NO DISPONIBLE";
+		}
 }
