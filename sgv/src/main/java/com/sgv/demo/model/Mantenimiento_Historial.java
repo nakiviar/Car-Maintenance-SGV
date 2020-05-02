@@ -2,6 +2,43 @@ package com.sgv.demo.model;
 
 public class Mantenimiento_Historial {
 
+	private long detalle;
+	private String id_historial;
+	private long id_mant;
+
+	public Mantenimiento_Historial(long detalle, String id_historial, long id_mant) {
+		this.detalle = detalle;
+		this.id_historial = id_historial;
+		this.id_mant = id_mant;
+	}
+
+	public Mantenimiento_Historial() {
+	}
+
+	public long getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(long detalle) {
+		this.detalle = detalle;
+	}
+
+	public String getId_historial() {
+		return id_historial;
+	}
+
+	public void setId_historial(String id_historial) {
+		this.id_historial = id_historial;
+	}
+
+	public long getId_mant() {
+		return id_mant;
+	}
+
+	public void setId_mant(long id_mant) {
+		this.id_mant = id_mant;
+	}
+
 }
 /*
 	CREATE TABLE tb_mantenimiento_historial (
