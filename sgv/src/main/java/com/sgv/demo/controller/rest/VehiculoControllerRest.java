@@ -1,8 +1,13 @@
 package com.sgv.demo.controller.rest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +35,15 @@ public class VehiculoControllerRest {
 	    
 	    //REGISTRO DE VEHICULO - POST 
 	    @PostMapping
-	    public String createVehiculo(@RequestBody Vehiculo veh) {
-	    	vehiculoService.create(veh);
-	    	return "Vehiculo Creado"; 
-	    	
+	    public ResponseEntity<Map<String,String>> createVehiculo(@RequestBody Vehiculo veh) {
+	    	String resultado= null;
+	    	resultado = vehiculoService.create(veh);
+	    	Map<String, String> map=new HashMap<String, String>();
+	    	map.put("resultado", resultado);
+	    	HttpHeaders headers= new HttpHeaders();
+	    	headers.add("Vehiculo", "OK");
+	    	return new ResponseEntity<Map<String,String>>(map, headers, HttpStatus.CREATED);
 	    }
-	  
 	    
 	    //VEHICULOS POR ID - GET
 		@GetMapping("/buscar/{vehiculoId}")

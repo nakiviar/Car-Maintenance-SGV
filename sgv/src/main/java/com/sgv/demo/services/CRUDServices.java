@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CRUDServices<T, ID> {
 
-	T create(T t);
+	String create(T t);
 
 	T get(ID id);
 

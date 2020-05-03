@@ -19,9 +19,9 @@ public class VehiculoServiceImpl implements VehiculoService{
 	
 	
 	@Override
-	public Vehiculo create(Vehiculo t) {
+	public String create(Vehiculo t) {
 		vehiculoRepository.save(t);
-		return t;
+		return "Vehiculo Creado";
 	}
 
 	@Override

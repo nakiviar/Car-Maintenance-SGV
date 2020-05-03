@@ -29,10 +29,10 @@ public class ConductorServiceImpl implements ConductorService {
 	}
 
 	@Override
-	public Conductor create(Conductor conductor) {
+	public String create(Conductor conductor) {
 
 		conductorRepository.save(conductor);
-		return conductor;
+		return "Cliente creado";
 	}
 
 	@Override
