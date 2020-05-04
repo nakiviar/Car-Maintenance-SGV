@@ -39,7 +39,7 @@ public class JDBCLicenciaRepository implements LicenciaRepository{
 	@Override
 	public String getNameById(Long id) {
 		   return jdbctemplate.queryForObject(
-	                "select vehiculos_licencia from books where id_tipoLicen = ?",
+	                "select vehiculos_licencia from TB_TIPO_LICENCIA where id_tipoLicen = ?",
 	                new Object[]{id},
 	                String.class
 	        );

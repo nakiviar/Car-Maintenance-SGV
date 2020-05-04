@@ -10,7 +10,6 @@ public interface CRUDRepository<T, ID>{
 
 	List<T> all();
 
-	void changeState(ID primaryKey);
 	
 	int update(T resourse);
 	

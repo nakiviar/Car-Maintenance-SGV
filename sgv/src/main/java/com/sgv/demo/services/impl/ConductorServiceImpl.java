@@ -32,7 +32,7 @@ public class ConductorServiceImpl implements ConductorService {
 	public String create(Conductor conductor) {
 
 		conductorRepository.save(conductor);
-		return "Cliente creado";
+		return "Conductor creado";
 	}
 
 	@Override
